@@ -43,10 +43,14 @@ public class ExecCmd extends Thread {
     }
     
     public synchronized void cancela(){
+        if (proc == null)
+            return;
         proc.destroy();
     }
     
     public synchronized boolean terminado(){
+        if (proc == null)
+            return true;
         return !proc.isAlive();
     }
 }
